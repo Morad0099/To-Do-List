@@ -15,7 +15,7 @@
     <link rel="mask-icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-b4b4269c16397ad2f0f7a01bcdf513a1994f4c94b8af2f191c09eb0d601762b1.svg" color="#111" />
 
 
-
+    <meta name="csrf-token" content="{{ csrf_token() }}">
   
     <script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-2c7831bb44f98c1391d6a4ffda0e1fd302503391ca806e7fcc7b9b87197aec26.js"></script>
 
@@ -186,7 +186,13 @@ span:hover{
       <a href="#">Home</a>
       <a href="#">About</a>
       <a href="#">Contact</a>
-      <a href="{{route('logout')}}">Logout</a>
+      @auth
+          <form action="/logout" method="POST">
+          @csrf
+          <button>Logout {{Auth::user()->name}}</button>
+          </form>
+      @endauth
+      
     </div>
 
     <div class="container">
@@ -197,7 +203,7 @@ span:hover{
             </div>
             <div class="row">
                 <input type="text" id="input-box" placeholder="add your tasks">
-                <button>Add</button>
+                <button id="button">Add</button>
             </div>
             <ul id="list-container">
             </ul>
@@ -212,7 +218,7 @@ span:hover{
   
       <script id="rendered-js" >
 const inputBox = document.getElementById("input-box");
-const button = document.querySelector("button");
+const button = document.getElementById("button");
 const list = document.getElementById("list-container");
 
 
@@ -220,8 +226,10 @@ function addTask() {
   if (inputBox.value === '') {
     alert("you must write something!");
   } else {
+    // console.log(inputBox);
     let li = document.createElement("li");
     li.innerHTML = inputBox.value;
+    send(inputBox.value) 
     console.log(inputBox.value);
     list.appendChild(li);
     inputBox.value = '';
@@ -257,6 +265,36 @@ function showTask() {
 }
 window.addEventListener("load", showTask);
 //# sourceURL=pen.js
+
+
+
+
+
+
+
+
+
+function send(todoText) 
+{
+// Send a POST request to the Laravel route
+fetch('{{route('send')}}', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+        // Add other headers if needed
+    },
+    body: JSON.stringify({ text: todoText }),
+})
+.then(response => response.json())
+.then(data => {
+    console.log(data.message); // Log the response message
+})
+.catch(error => {
+    console.error('Error:', error);
+});
+ 
+}
     </script>
 
   
