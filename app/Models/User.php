@@ -18,9 +18,12 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    public function tasks(){
-        return $this->belongsToMany(Task::class);
+    public function tasks()
+    {
+        return $this->belongsToMany(Tasks::class, 'task_user', 'user_id', 'task_id');
     }
+
+   
     protected $fillable = [
         'name',
         'role',
