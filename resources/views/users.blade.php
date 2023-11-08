@@ -154,6 +154,20 @@ span:hover{
     background-color: #c9c9c9;
     color: #fff;
 }
+
+.navbar {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px;
+      background-color: #002765;
+      color: white;
+    }
+
+    .navbar a {
+      color: white;
+      text-decoration: none;
+      padding: 10px;
+    }
 </style>
 
   <script>
@@ -165,7 +179,14 @@ span:hover{
 </head>
 
 <body translate="no">
+
+  
   <body>
+    <div class="navbar">
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+    </div>
     <div class="container">
         <div class="todo-app">
             <div class="app-title">
