@@ -15,12 +15,15 @@ use App\Http\Controllers\ProfileController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('landpage');
-// });
+Route::get('/', function () {
+    return view('landpage');
+});
+Route::get('/users', function () {
+    return view('users');
+});
 
-Route::get('/', [active::class, 'users']);
-Route::get('/users/data', [active::class, 'users']);
+// Route::get('/', [active::class, 'users']);
+// Route::get('/users/data', [active::class, 'users']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');

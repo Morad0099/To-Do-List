@@ -186,7 +186,9 @@ span:hover{
       <a href="#">Home</a>
       <a href="#">About</a>
       <a href="#">Contact</a>
+      <a href="{{route('logout')}}">Logout</a>
     </div>
+
     <div class="container">
         <div class="todo-app">
             <div class="app-title">

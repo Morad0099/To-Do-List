@@ -60,6 +60,6 @@ class RegisteredUserController extends Controller
                 break;
         }
 
-        // return redirect(RouteServiceProvider::HOME);
+        return redirect(RouteServiceProvider::HOME);
     }
 }
