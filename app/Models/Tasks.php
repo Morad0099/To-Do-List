@@ -10,7 +10,8 @@ class Tasks extends Model
     use HasFactory;
     protected $table = 'tasks';
     protected $fillable = ['description', 'title'];
-    public function users(){
-        return $this->belongsToMany(User::class);
+    public function users()
+    {
+        return $this->belongsToMany(User::class, 'task_user', 'tasks_id', 'user_id');
     }
 }

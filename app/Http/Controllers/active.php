@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Task;
+use App\Models\User;
 use App\Models\Tasks;
+use App\Models\task_user;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -21,12 +22,15 @@ class active extends Controller
     public function users_data()
     {
         try {
-            $tasks = Tasks::where('user_id', auth()->user()->id)->get();
-
+            // dd(auth()->user());
+            // $tasks = task_user::with('Tasks')->where('user_id', auth()->user()->id)->get();
+            $tasks = User::find(auth()->user()->id)->tasks;
+            // $data = $tasks->tasks;
+            // dd($tasks->description);
             $todos = [];
         
             foreach ($tasks as $task) {
-                $todos['t' . $task->id] = ['text' => $task->title];
+                $todos['t' . $task->id] = ['text' => $task->description ?? ''];
                 // You can add more fields like description, timestamp, etc., based on your requirements
             }
         
