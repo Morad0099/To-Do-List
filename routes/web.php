@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\active;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +18,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('landpage');
 });
+
+Route::get('/users', [active::class, 'users']);
+Route::get('/users/data', [active::class, 'users']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
