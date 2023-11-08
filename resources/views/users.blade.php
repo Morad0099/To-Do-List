@@ -211,7 +211,7 @@
             <a href="#">About</a>
             <a href="#">Contact</a>
             @auth
-                <form action="/logout" method="POST">
+                <form action="/logout" method="GET">
                     @csrf
                     <button>Logout {{ Auth::user()->name }}</button>
                 </form>
@@ -259,6 +259,7 @@
                 inputBox.value = '';
                 let span = document.createElement("span");
                 span.innerHTML = "x";
+                
                 li.appendChild(span);
 
             }
@@ -267,6 +268,9 @@
         list.addEventListener("click", e => {
             if (e.target.tagName === "LI") {
                 e.target.classList.toggle("checked");
+                //know what was checked
+    
+                console.log(e.target.innerText);
                 saveData();
             } else if (e.target.tagName === "SPAN") {
                 e.target.parentElement.remove();
@@ -311,7 +315,7 @@
                     for (const todoKey in todos) {
                         if (todos.hasOwnProperty(todoKey)) {
                             const text = todos[todoKey].text;
-                            htmlString += `<li>${text}<span>x</span></li>`;
+                            htmlString += `<li id="${text}">${text}<span>x</span></li>`;
                         }
                     }
 
