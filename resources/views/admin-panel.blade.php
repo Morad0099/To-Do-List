@@ -298,6 +298,15 @@ ul.nav2 a:hover, ul.nav2 a.active {
 </head>
 
 <body translate="no">
+  <div class="navbar">
+    @auth
+        <form action="/logout" method="GET">
+            @csrf
+            <button>Logout {{ Auth::user()->name }}</button>
+        </form>
+    @endauth
+
+</div>
   <!-- SIDEBAR -->
 <div class="sidebar">
 	

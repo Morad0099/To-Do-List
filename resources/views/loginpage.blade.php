@@ -290,38 +290,50 @@ footer a {
 </head>
 
 <body translate="no">
-  <h2>Weekly Coding Challenge #1: Sign in/up Form</h2>
+  <h2>Welcome To Morad's To-Do Listings Page</h2>
 <div class="container" id="container">
 	<div class="form-container sign-up-container">
-		<form action="#">
-		<h1>Teacher Login</h1>
+		<form method="post" action="">
+		<h1>Register</h1>
 			<input type="text" placeholder="Name" />
+			@error('name')
+				<p>{{$message}}</p>
+			@enderror
 			
+			<input type="email" placeholder="email" />
+			@error('email')
+				<p>{{$message}}</p>
+			@enderror
+
 			<input type="password" placeholder="Password" />
-			<button>Login</button>
+
+			<a href="{{route('register')}}"><button>Register</button></a>
 		</form>
 	</div>
 	<div class="form-container sign-in-container">
-		<form action="#">
-			<h1>Student login</h1>
+		<form method="post">
+			<h1>Login</h1>
 			
 			<input type="email" placeholder="Email" />
+			@error('name')
+				<p>{{$message}}</p>
+			@enderror
 			<input type="password" placeholder="Password" />
-			<button>Login</button>
+			<a href="{{route('login')}}"><button>Login</button></a>
 		</form>
 	</div>
 	<div class="overlay-container">
 		<div class="overlay">
 			<div class="overlay-panel overlay-left">
-				<h1>Student Login</h1>
-				<p>To login as a student, please click the button below</p>
+				<h1>Login</h1>
+				<p>To login , please click the button below</p>
 				<button class="ghost" id="signIn">Login</button>
 			</div>
 			<div class="overlay-panel overlay-right">
-				<h1>Teacher Login</h1>
-        <p>To login as a Teacher, please click the button below
+				<h1>Register</h1>
+        <p>To Register, please click the button below
         </p>
-				<button class="ghost" id="signUp">LogIn</button>
+				<button class="ghost" id="signUp">Register</button>
 			</div>
 		</div>
 	</div>
