@@ -19,6 +19,12 @@ class active extends Controller
         return view('users');
     }
 
+    public function admin()
+    {
+        return view('admin-panel');
+    }
+
+
     public function users_data()
     {
         try {

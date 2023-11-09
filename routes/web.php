@@ -24,10 +24,12 @@ Route::get('/users', function () {
 
 // Route::get('/', [active::class, 'users']);
 Route::get('/todo/data', [active::class, 'users_data']);
+// Route::get('/todo/data', [active::class, 'users_data']);
 Route::post('/send/todo/data', [active::class, 'store'])->name('send');
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    // return view('dashboard');
+    return view('admin-panel');
 })->middleware(['auth', 'verified', 'Admin'])->name('dashboard');
 
 
