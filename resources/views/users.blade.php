@@ -368,6 +368,7 @@
                 });
 
         }
+        console.log('hi');
     </script>
 
 
